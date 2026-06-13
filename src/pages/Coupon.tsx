@@ -283,7 +283,7 @@ export function CouponPage() {
   const [activeId, setActiveId] = useState<string>('');
 
   useSEO({
-    title: '搬瓦工优惠码2026年最新整理 - 搬瓦工教程',
+    title: '搬瓦工优惠码2026年最新整理',
     description: '2026年最新搬瓦工优惠码整理，判断优惠码是否可用，教你没有优惠码时怎么买更划算。'
   });
 

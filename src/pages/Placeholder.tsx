@@ -22,7 +22,7 @@ export function PlaceholderPage() {
   else if (pathName.includes('templates')) title = "英文售后工单模板大全";
 
   useSEO({
-    title: `${title} - 搬瓦工教程`,
+    title: title,
     description: desc
   });
 

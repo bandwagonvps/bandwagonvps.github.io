@@ -5,7 +5,7 @@ import { useSEO } from '../lib/useSEO';
 
 export function AlternativesPage() {
   useSEO({
-    title: '对比与替代方案 - 搬瓦工教程',
+    title: '对比与替代方案',
     description: '搬瓦工好不好？值不值得买？通过与其他VPS服务商的对比，帮你认清优劣，找到最适合你的方案。'
   });
 

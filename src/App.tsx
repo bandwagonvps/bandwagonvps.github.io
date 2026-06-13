@@ -12,6 +12,7 @@ import { StartPage } from './pages/Start';
 import { ChoosePage } from './pages/Choose';
 import { AlternativesPage } from './pages/Alternatives';
 import { ArticlePage } from './pages/Article';
+import { ToolPage } from './pages/Tool';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="tools/plan-selector" element={<ToolPage />} />
           <Route path="coupon" element={<CouponPage />} />
           <Route path="start" element={<StartPage />} />
           <Route path="start/:slug" element={<ArticlePage />} />

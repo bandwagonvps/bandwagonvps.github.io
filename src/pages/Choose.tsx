@@ -5,7 +5,7 @@ import { useSEO } from '../lib/useSEO';
 
 export function ChoosePage() {
   useSEO({
-    title: '如何选择 - 搬瓦工教程',
+    title: '如何选择',
     description: '提供直观的搬瓦工机房与套餐对比，按用途、预算与访问需求为你梳理决策逻辑，帮你买得精准。'
   });
 

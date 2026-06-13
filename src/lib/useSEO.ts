@@ -8,7 +8,7 @@ interface SEOProps {
 export function useSEO({ title, description }: SEOProps) {
   useEffect(() => {
     if (title) {
-      document.title = `${title} | 搬瓦工教程中心`;
+      document.title = `${title} - 搬瓦工中文网`;
     }
 
     if (description) {

@@ -5,7 +5,7 @@ import { useSEO } from '../lib/useSEO';
 
 export function StartPage() {
   useSEO({
-    title: '新手指南 - 搬瓦工教程',
+    title: '新手指南',
     description: '搬瓦工VPS新手系统性购买指南，从判断需求、注册下单，到后台功能梳理和基础教程。'
   });
 
