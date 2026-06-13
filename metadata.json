@@ -1,0 +1,6 @@
+{
+  "name": "BWH Guide",
+  "description": "搬瓦工真实评测与结构化购买指南，包含套餐选择器与决策向导。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
