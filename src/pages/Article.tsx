@@ -244,13 +244,30 @@ export function ArticlePage() {
                 </p>
               </div>
             </div>
+
+            {/* Article List */}
+            <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-sm ring-1 ring-slate-200 mt-8">
+              <div className="flex items-center gap-2 mb-6 text-slate-900 font-bold text-xl">
+                <BookOpen className="w-6 h-6 text-indigo-500" />
+                <span>相关指南</span>
+              </div>
+              <ul className="space-y-4">
+                {relatedList.map((navArticle) => (
+                   <li key={navArticle.slug}>
+                     <Link to={`/${article.category}/${navArticle.slug}`} className={`block text-base ${article.slug === navArticle.slug ? `font-medium ${themeAccentText}` : 'text-slate-600 hover:text-slate-900'}`}>
+                       {navArticle.title}
+                     </Link>
+                   </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Right Sidebar - Navigation & Article List */}
           <div className="hidden lg:block lg:w-1/4 space-y-8">
             
             {/* Article Navigation (TOC) */}
-            <div className="sticky top-28 bg-white p-6 rounded-2xl shadow-sm ring-1 ring-slate-200">
+            <div className="sticky top-28 bg-white p-6 rounded-2xl shadow-sm ring-1 ring-slate-200 mb-8">
               <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold">
                 <List className={`w-5 h-5 ${themeAccentText}`} />
                 <span>文章导航</span>
@@ -275,23 +292,6 @@ export function ArticlePage() {
               </nav>
             </div>
             
-            {/* Article List */}
-            <div className="bg-white p-6 rounded-2xl shadow-sm ring-1 ring-slate-200">
-              <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold">
-                <BookOpen className="w-5 h-5 text-indigo-500" />
-                <span>相关指南</span>
-              </div>
-              <ul className="space-y-3">
-                {relatedList.map((navArticle) => (
-                   <li key={navArticle.slug}>
-                     <Link to={`/${article.category}/${navArticle.slug}`} className={`block text-sm ${article.slug === navArticle.slug ? `font-medium ${themeAccentText}` : 'text-slate-500 hover:text-slate-900'}`}>
-                       {navArticle.title}
-                     </Link>
-                   </li>
-                ))}
-              </ul>
-            </div>
-
             <RecommendedPlansWidget />
 
           </div>
