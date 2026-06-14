@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import Markdown, { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { List, BookOpen, ChevronRight, Home, Calendar, Clock, User } from 'lucide-react';
 import { Link, useParams, Navigate, useLocation } from 'react-router-dom';
 import { startArticles, chooseArticles, alternativesArticles } from '../data/articles';
 import { useSEO } from '../lib/useSEO';
+import { RecommendedPlansWidget } from '../components/layout/RecommendedPlansWidget';
 
 const allArticles = [...startArticles, ...chooseArticles, ...alternativesArticles];
 
@@ -89,12 +91,14 @@ export function ArticlePage() {
   const components: Components = {
     h1: () => null,
     h2: ({ node, children, ...props }) => {
-      let text = '';
-      if (Array.isArray(children)) {
-        text = children.map(c => c?.toString() || '').join('');
-      } else {
-        text = children?.toString() || '';
-      }
+      const extractText = (item: any): string => {
+        if (typeof item === 'string') return item;
+        if (Array.isArray(item)) return item.map(extractText).join('');
+        if (item?.props?.children) return extractText(item.props.children);
+        return '';
+      };
+      
+      const text = extractText(children);
       
       let id = '';
       if (article.toc) {
@@ -205,6 +209,7 @@ export function ArticlePage() {
               <div className={proseWrapperClass}>
                 <Markdown 
                   remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
                   components={components}
                 >
                   {contentBlocks[0]}
@@ -218,6 +223,7 @@ export function ArticlePage() {
                 <div className={proseWrapperClass}>
                   <Markdown 
                     remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
                     components={components}
                   >
                     {block}
@@ -285,6 +291,8 @@ export function ArticlePage() {
                 ))}
               </ul>
             </div>
+
+            <RecommendedPlansWidget />
 
           </div>
         </div>

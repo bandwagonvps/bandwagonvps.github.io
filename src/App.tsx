@@ -5,6 +5,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 import { Home } from './pages/Home';
 import { PlaceholderPage } from './pages/Placeholder';
 import { CouponPage } from './pages/Coupon';
@@ -17,6 +18,7 @@ import { ToolPage } from './pages/Tool';
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

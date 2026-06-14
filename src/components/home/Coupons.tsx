@@ -16,7 +16,7 @@ export function Coupons() {
             🛑 2026 最新优惠码说明与下单防坑检查表
           </p>
           <p className="mt-6 text-lg leading-8 text-slate-400">
-            别再全网到处找优惠码了，目前官方已全面暂停折扣代码。结账时的 "Promo Code" 输入框是系统默认保留的。目前市场上所有标榜“最新可用”的搬瓦工优惠码均已彻底失效。许多内容农场会用过期代码骗取点击。
+            别再全网到处找优惠码了，目前官方已全面暂停折扣代码。结账时的 "Promo Code" 输入框是系统默认保留的。目前市场上所有标榜“最新可用”的<Link to="/coupon" className="text-amber-500 hover:text-amber-400 font-medium">搬瓦工优惠码</Link>均已彻底失效。许多内容农场会用过期代码骗取点击。
           </p>
         </div>
         

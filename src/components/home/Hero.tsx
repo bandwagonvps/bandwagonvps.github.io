@@ -1,17 +1,28 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, ChevronDown, CheckCircle, XCircle, AlertTriangle, X } from 'lucide-react';
+import { useState, useMemo } from 'react';
+import { pickRecommendation } from '../../data/toolData';
 
 export function Hero() {
-  const navigate = useNavigate();
-  const [purpose, setPurpose] = useState('建站');
-  const [region, setRegion] = useState('国内');
-  const [budget, setBudget] = useState('$100');
+  const [purpose, setPurpose] = useState('cn_site');
+  const [region, setRegion] = useState('mainland');
+  const [budget, setBudget] = useState('qtr50');
+  const [showModal, setShowModal] = useState(false);
+
+  const recommendation = useMemo(() => {
+    return pickRecommendation({
+      purpose: purpose,
+      audience: region,
+      load: 'wp_light',
+      budget: budget,
+      priority: 'balanced',
+    });
+  }, [purpose, region, budget]);
 
   const handleRecommend = () => {
-    const params = new URLSearchParams({ purpose, region, budget });
-    navigate(`/tools/plan-selector?${params.toString()}`);
+    setShowModal(true);
   };
+
 
   return (
     <div className="relative isolate overflow-hidden bg-white">
@@ -30,15 +41,17 @@ export function Hero() {
             搬瓦工官网选购指南与避坑排雷：<br />拒绝盲目下单
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-600">
-            帮助您在搬瓦工官网正确选择适合自己的中国直连优化线路。<br />不要只看眼花缭乱的测速图表，先通过我们的结构化排雷指南，做对每次购买和续费决策。
+            帮助您在搬瓦工官网正确选择适合自己的<strong className="text-slate-900 font-semibold">中国直连优化线路</strong>。<br />不要只看眼花缭乱的测速图表，先通过我们的<strong className="text-slate-900 font-semibold">结构化排雷指南</strong>，做对每次购买和续费决策。
           </p>
           <div className="mt-10 flex items-center gap-x-6">
-            <Link
-              to="/tools/plan-selector"
-              className="rounded-md bg-amber-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all"
+            <button
+              onClick={() => {
+                document.getElementById('plan-selector-card')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="rounded-md bg-amber-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all cursor-pointer"
             >
               使用 1 分钟套餐选择器
-            </Link>
+            </button>
             <a href="https://bwh81.net" target="_blank" rel="noopener noreferrer" className="group text-sm font-semibold leading-6 text-slate-900 flex items-center gap-1">
               直达官网安全通道 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
@@ -60,7 +73,7 @@ export function Hero() {
         </div>
         
         <div className="mx-auto mt-16 max-w-2xl sm:mt-24 lg:ml-10 lg:mt-0 lg:max-w-none lg:flex-1 lg:pl-10 xl:pl-20">
-          <div className="rounded-xl bg-slate-50/50 p-2 ring-1 ring-inset ring-slate-900/5 lg:rounded-2xl lg:p-4 max-w-lg mx-auto lg:mr-0">
+          <div id="plan-selector-card" className="rounded-xl bg-slate-50/50 p-2 ring-1 ring-inset ring-slate-900/5 lg:rounded-2xl lg:p-4 max-w-lg mx-auto lg:mr-0">
             <div className="rounded-md bg-white shadow-2xl ring-1 ring-slate-900/10 overflow-hidden">
                <div className="flex items-center border-b border-slate-100 bg-slate-50 px-4 py-3">
                  <div className="flex gap-2">
@@ -82,11 +95,16 @@ export function Hero() {
                         <select 
                           value={purpose}
                           onChange={(e) => setPurpose(e.target.value)}
-                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer"
+                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer text-xs sm:text-sm"
                         >
-                          <option value="建站">建站 (WordPress)</option>
-                          <option value="AI">AI/跨境外贸</option>
-                          <option value="测试">学习/折腾测试</option>
+                          <option value="cn_site">建站起步 / 个人博客</option>
+                          <option value="wp_long">长期网站 / SEO / 多插件</option>
+                          <option value="learn">学习 Linux / 跑脚本</option>
+                          <option value="overseas_site">外贸站 / 跨境项目</option>
+                          <option value="ai">AI 部署 / Docker 应用</option>
+                          <option value="low_latency">低延迟 / 交互优先</option>
+                          <option value="business">企业业务 / 稳定性优先</option>
+                          <option value="unsure">还不确定，求稳妥方案</option>
                         </select>
                         <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                       </div>
@@ -98,11 +116,15 @@ export function Hero() {
                         <select 
                           value={region}
                           onChange={(e) => setRegion(e.target.value)}
-                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer"
+                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer text-xs sm:text-sm"
                         >
-                          <option value="国内">中国大陆主要</option>
-                          <option value="欧美">北美/欧洲</option>
-                          <option value="全球">全球混合访问</option>
+                          <option value="mainland">中国大陆用户</option>
+                          <option value="global">国内外兼顾</option>
+                          <option value="north_america">北美 / 海外用户</option>
+                          <option value="europe">欧洲用户</option>
+                          <option value="japan_asia">日本/亚洲</option>
+                          <option value="mobile_unicom">移动/联通优先</option>
+                          <option value="unknown">暂不确定</option>
                         </select>
                         <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                       </div>
@@ -114,11 +136,14 @@ export function Hero() {
                         <select 
                           value={budget}
                           onChange={(e) => setBudget(e.target.value)}
-                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer"
+                          className="w-full appearance-none bg-white px-3 py-2 pr-8 rounded shadow-sm border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-slate-700 font-sans cursor-pointer text-xs sm:text-sm"
                         >
-                          <option value="$50">极力压缩 ~$50</option>
-                          <option value="$100">追求稳定 ~$100</option>
-                          <option value="不限">质量优先 不差钱</option>
+                          <option value="qtr50">~$170/年 或 季付</option>
+                          <option value="low49">控制 ~$49.99/年</option>
+                          <option value="year300">接受 ~$299.99/年</option>
+                          <option value="month50">接受 ~$49.99/月</option>
+                          <option value="month90">接受 ~$89.99/月以上</option>
+                          <option value="business_budget">企业业务预算</option>
                         </select>
                         <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                       </div>
@@ -136,6 +161,97 @@ export function Hero() {
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm" style={{ zIndex: 100 }}>
+          <div className="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl relative">
+            <button 
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full transition-colors z-10"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="p-6 md:p-8 space-y-6">
+              <h3 className="text-2xl font-bold text-slate-900 border-b border-slate-100 pb-4 pr-10">
+                你的定制推荐方案
+              </h3>
+              
+              <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 shadow-lg text-white relative overflow-hidden">
+                <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
+                
+                <div className="text-amber-400 font-bold text-xs tracking-wider uppercase mb-2">主推荐套餐</div>
+                <h2 className="text-2xl sm:text-3xl font-black mb-4">{recommendation.main.name}</h2>
+                <p className="text-slate-300 text-sm mb-6 leading-relaxed bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">{recommendation.reason}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="bg-slate-700 border border-slate-600 px-3 py-1.5 rounded-full text-xs font-semibold">{recommendation.main.price}</span>
+                  <span className="bg-slate-700 border border-slate-600 px-3 py-1.5 rounded-full text-xs font-semibold">{recommendation.main.tag}</span>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a href={recommendation.main.link} target="_blank" rel="sponsored nofollow noopener" className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 text-sm font-bold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
+                    访问官网选购 <ArrowRight className="w-4 h-4" />
+                  </a>
+                  <a href="https://stock.bwg.net" target="_blank" rel="nofollow noopener" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
+                    查看实时库存
+                  </a>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                  <div className="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-emerald-500" />
+                    适合人群与场景
+                  </div>
+                  <ul className="space-y-1.5">
+                    {recommendation.main.fit.map((item, i) => (
+                      <li key={i} className="text-slate-600 text-xs flex gap-2">
+                        <span className="text-slate-300">•</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                  <div className="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
+                    <XCircle className="w-4 h-4 text-rose-500" />
+                    不适合的情况
+                  </div>
+                  <ul className="space-y-1.5">
+                    {recommendation.main.notFit.map((item, i) => (
+                      <li key={i} className="text-slate-600 text-xs flex gap-2">
+                        <span className="text-slate-300">•</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <div className="font-bold text-amber-900 text-sm mb-2 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-600" />
+                  为什么不是更便宜的那个？
+                </div>
+                <p className="text-amber-800 text-xs leading-relaxed">{recommendation.main.cheaper}</p>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="font-bold text-slate-900 text-sm mb-1">备选方案：{recommendation.backup.name}</div>
+                      <div className="text-slate-500 text-xs line-clamp-2">{recommendation.backup.desc}</div>
+                    </div>
+                    <a href={recommendation.backup.link} target="_blank" rel="sponsored nofollow noopener" className="whitespace-nowrap shrink-0 text-xs font-bold text-amber-600 hover:text-amber-700">查看 &rarr;</a>
+                 </div>
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 text-blue-800 text-xs p-3 rounded-lg leading-relaxed">
+                {recommendation.note} 下单前请关注：价格、库存、可用机房。
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
