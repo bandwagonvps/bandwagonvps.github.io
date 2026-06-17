@@ -358,6 +358,14 @@ VPS 优惠码跟普通电商券不是一回事，它经常绑住套餐、周期�
 
 export function CouponPage() {
   const [activeId, setActiveId] = useState<string>('');
+  const [isTocExpanded, setIsTocExpanded] = useState(true);
+
+  // Split markdown to insert TOC after first paragraph
+  const blocks = articleMarkdown.split('\n\n');
+  const firstParaIdx = blocks.findIndex(b => b.trim() !== '' && !b.trim().startsWith('#'));
+  const splitIndex = firstParaIdx !== -1 ? firstParaIdx + 1 : 1;
+  const beforeTOC = blocks.slice(0, splitIndex).join('\n\n');
+  const afterTOC = blocks.slice(splitIndex).join('\n\n');
 
   useSEO({
     title: '搬瓦工优惠码2026年最新整理',
@@ -419,7 +427,52 @@ export function CouponPage() {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw, rehypeSlug]}
               >
-                {articleMarkdown}
+                {beforeTOC}
+              </Markdown>
+
+              {/* Inline TOC */}
+              {toc.length > 0 && (
+                <div className="bg-slate-50 p-6 rounded-2xl ring-1 ring-slate-200/60 my-8 not-prose">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2 text-slate-900 font-semibold text-lg">
+                      <List className="w-5 h-5 text-amber-500" />
+                      <span>文章导航</span>
+                    </div>
+                    <button 
+                      onClick={() => setIsTocExpanded(!isTocExpanded)} 
+                      className="text-sm text-slate-500 hover:text-slate-800 transition-colors px-2 py-1"
+                    >
+                      {isTocExpanded ? '[隐藏]' : '[显示]'}
+                    </button>
+                  </div>
+                  {isTocExpanded && (
+                    <nav className="space-y-1 relative border-l-2 border-slate-200 ml-2 pl-4 mt-2">
+                      {toc.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => scrollToHeading(item.id)}
+                          className={`relative block text-left w-full py-1.5 text-sm transition-colors ${
+                            activeId === item.id
+                              ? 'text-amber-600 font-medium'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          {activeId === item.id && (
+                            <span className="absolute -left-[23px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-amber-500" />
+                          )}
+                          {item.title}
+                        </button>
+                      ))}
+                    </nav>
+                  )}
+                </div>
+              )}
+
+              <Markdown 
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw, rehypeSlug]}
+              >
+                {afterTOC}
               </Markdown>
             </article>
             {/* Author Block */}
@@ -455,34 +508,10 @@ export function CouponPage() {
           </div>
 
           {/* Right Sidebar - Sticky Navigation */}
-          <div className="hidden lg:block lg:w-1/4">
-            <div className="sticky top-28 bg-white p-6 rounded-2xl shadow-sm ring-1 ring-slate-200">
-              <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold">
-                <List className="w-5 h-5 text-amber-500" />
-                <span>文章导航</span>
-              </div>
-              <nav className="space-y-1 relative border-l-2 border-slate-100 ml-2 pl-4">
-                {toc.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToHeading(item.id)}
-                    className={`relative block text-left w-full py-1.5 text-sm transition-colors ${
-                      activeId === item.id
-                        ? 'text-amber-600 font-medium'
-                        : 'text-slate-500 hover:text-slate-900'
-                    }`}
-                  >
-                    {/* Active indicator bullet */}
-                    {activeId === item.id && (
-                      <span className="absolute -left-[23px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-amber-500" />
-                    )}
-                    {item.title}
-                  </button>
-                ))}
-              </nav>
+          <div className="hidden lg:block lg:w-1/4 space-y-8">
+            <div className="sticky top-28">
+              <RecommendedPlansWidget />
             </div>
-            
-            <RecommendedPlansWidget />
           </div>
         </div>
       </div>

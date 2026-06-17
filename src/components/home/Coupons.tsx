@@ -29,7 +29,7 @@ export function Coupons() {
                 停止无意义的搜索，直接通过官方安全通道购买当前库存的高性价比套餐。早一天部署，早一天产生价值。
               </p>
               <a
-                href="https://bwh81.net"
+                href="https://bwh81.net/aff.php?aff=80471"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-lg bg-rose-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600 transition-all w-full sm:w-auto"

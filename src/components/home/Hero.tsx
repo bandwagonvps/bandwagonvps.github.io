@@ -38,7 +38,7 @@ export function Hero() {
             </span>
           </div>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl">
-            搬瓦工官网选购指南与避坑排雷：<br />拒绝盲目下单
+            搬瓦工官网选购指南与避坑排雷
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-600">
             帮助您在搬瓦工官网正确选择适合自己的<strong className="text-slate-900 font-semibold">中国直连优化线路</strong>。<br />不要只看眼花缭乱的测速图表，先通过我们的<strong className="text-slate-900 font-semibold">结构化排雷指南</strong>，做对每次购买和续费决策。
@@ -52,7 +52,7 @@ export function Hero() {
             >
               使用 1 分钟套餐选择器
             </button>
-            <a href="https://bwh81.net" target="_blank" rel="noopener noreferrer" className="group text-sm font-semibold leading-6 text-slate-900 flex items-center gap-1">
+            <a href="https://bwh81.net/aff.php?aff=80471" target="_blank" rel="noopener noreferrer" className="group text-sm font-semibold leading-6 text-slate-900 flex items-center gap-1">
               直达官网安全通道 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
@@ -191,9 +191,9 @@ export function Hero() {
                   <a href={recommendation.main.link} target="_blank" rel="sponsored nofollow noopener" className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 text-sm font-bold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
                     访问官网选购 <ArrowRight className="w-4 h-4" />
                   </a>
-                  <a href="https://stock.bwg.net" target="_blank" rel="nofollow noopener" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
+                  <Link to="/stock" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
                     查看实时库存
-                  </a>
+                  </Link>
                 </div>
               </div>
 

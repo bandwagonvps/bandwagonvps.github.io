@@ -11,6 +11,25 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
+  // Proxy endpoint for BWG products.json
+  app.get("/api/stock-status", async (req, res) => {
+    try {
+      const response = await fetch("https://stock.bwg.net/products.json", {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; BWG Stock Checker/1.0)'
+        }
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch stock data: ${response.status} ${response.statusText}`);
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error("Error fetching stock status:", error);
+      res.status(500).json({ error: "Failed to fetch stock data" });
+    }
+  });
+
   if (process.env.NODE_ENV !== "production") {
     // Vite middleware for development
     const vite = await createViteServer({

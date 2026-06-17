@@ -193,7 +193,7 @@ export function ToolPage() {
                 <a href={main.link} target="_blank" rel="sponsored nofollow noopener" className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-3.5 px-6 rounded-xl transition-colors w-full sm:w-auto">
                   访问官网选购 <ArrowRight className="w-4 h-4" />
                 </a>
-                <a href="https://stock.bwg.net" target="_blank" rel="nofollow noopener" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors w-full sm:w-auto">
+                <a href="/stock" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors w-full sm:w-auto">
                   查看实时库存
                 </a>
               </div>

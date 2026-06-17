@@ -33,7 +33,7 @@ export function Mirrors() {
                 <p className="text-lg font-mono text-slate-600 mb-4">bwh81.net</p>
               </div>
               <a
-                href="https://bwh81.net"
+                href="https://bwh81.net/aff.php?aff=80471"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all"
@@ -50,7 +50,7 @@ export function Mirrors() {
                 <p className="text-lg font-mono text-slate-600 mb-4">bwh89.net</p>
               </div>
               <a
-                href="https://bwh89.net"
+                href="https://bwh89.net/aff.php?aff=80471"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex justify-center items-center gap-2 rounded-lg bg-slate-800 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800 transition-all"

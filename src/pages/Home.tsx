@@ -13,7 +13,7 @@ import { useSEO } from '../lib/useSEO';
 
 export function Home() {
   useSEO({
-    title: '2026最新搬瓦工官网选购指南与防坑避雷 - 拒绝盲目下单',
+    title: '搬瓦工官网VPS选购指南',
     description: '寻找最适合的搬瓦工(BandwagonHost)VPS？为您提供基于真实测试的搬瓦工官网购买指南、实时防封镜像直连地址及防坑避雷清单，新手必看。'
   });
 

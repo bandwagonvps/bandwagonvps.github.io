@@ -14,6 +14,7 @@ import { ChoosePage } from './pages/Choose';
 import { AlternativesPage } from './pages/Alternatives';
 import { ArticlePage } from './pages/Article';
 import { ToolPage } from './pages/Tool';
+import { StockPage } from './pages/Stock';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="tools/plan-selector" element={<ToolPage />} />
           <Route path="coupon" element={<CouponPage />} />
+          <Route path="stock" element={<StockPage />} />
           <Route path="start" element={<StartPage />} />
           <Route path="start/:slug" element={<ArticlePage />} />
           <Route path="choose" element={<ChoosePage />} />

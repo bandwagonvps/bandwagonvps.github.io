@@ -1,0 +1,11 @@
+    <tr>
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">
+    <tr class="hover:bg-slate-50">

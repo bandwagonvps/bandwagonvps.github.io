@@ -14,6 +14,7 @@ export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
   const article = allArticles.find(a => a.slug === slug);
   const [activeId, setActiveId] = useState<string>('');
+  const [isTocExpanded, setIsTocExpanded] = useState(true);
 
   useSEO({
     title: article?.seoTitle || article?.title,
@@ -127,7 +128,7 @@ export function ArticlePage() {
       </h3>
     ),
     table: ({ node, ...props }) => (
-      <div className="my-8 overflow-x-auto rounded-xl border border-slate-200 shadow-sm not-prose">
+      <div className="my-8 rounded-xl border border-slate-200 shadow-sm overflow-hidden not-prose bg-white">
         <table className="w-full text-left border-collapse text-sm" {...props} />
       </div>
     ),
@@ -135,7 +136,7 @@ export function ArticlePage() {
       <thead className="bg-slate-50 border-b border-slate-200 text-slate-700" {...props} />
     ),
     th: ({ node, ...props }) => (
-      <th className="px-6 py-4 font-semibold text-slate-900 whitespace-nowrap" {...props} />
+      <th className="px-6 py-4 font-semibold text-slate-900" {...props} />
     ),
     td: ({ node, ...props }) => (
       <td className="px-6 py-4 border-b border-slate-100 last:border-0 text-slate-600 align-top leading-relaxed" {...props} />
@@ -165,6 +166,13 @@ export function ArticlePage() {
   // Split content into blocks by ## headings, and remove markdown horizontal rules '---'
   const cleanContent = article.content.replace(/^---\s*$/gm, '');
   const contentBlocks = cleanContent.split(/(?=^##\s+)/m);
+
+  // Split intro block to insert TOC after first paragraph
+  const introBlocks = contentBlocks[0].split('\n\n');
+  const firstParaIdx = introBlocks.findIndex(b => b.trim() !== '' && !b.trim().startsWith('#'));
+  const splitIndex = firstParaIdx !== -1 ? firstParaIdx + 1 : 1;
+  const beforeTOC = introBlocks.slice(0, splitIndex).join('\n\n');
+  const afterTOC = introBlocks.slice(splitIndex).join('\n\n');
 
   return (
     <div className="bg-slate-50 py-12 sm:py-16 min-h-screen">
@@ -212,7 +220,53 @@ export function ArticlePage() {
                   rehypePlugins={[rehypeRaw]}
                   components={components}
                 >
-                  {contentBlocks[0]}
+                  {beforeTOC}
+                </Markdown>
+
+                {/* Inline TOC */}
+                {article.toc && article.toc.length > 0 && (
+                  <div className="bg-slate-50 p-6 rounded-2xl ring-1 ring-slate-200/60 my-8 not-prose">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2 text-slate-900 font-semibold text-lg">
+                        <List className={`w-5 h-5 ${themeAccentText}`} />
+                        <span>文章导航</span>
+                      </div>
+                      <button 
+                        onClick={() => setIsTocExpanded(!isTocExpanded)} 
+                        className="text-sm text-slate-500 hover:text-slate-800 transition-colors px-2 py-1"
+                      >
+                        {isTocExpanded ? '[隐藏]' : '[显示]'}
+                      </button>
+                    </div>
+                    {isTocExpanded && (
+                      <nav className="space-y-1 relative border-l-2 border-slate-200 ml-2 pl-4 mt-2">
+                        {article.toc.map((item) => (
+                          <button
+                            key={item.id}
+                            onClick={() => scrollToHeading(item.id)}
+                            className={`relative block text-left w-full py-1.5 text-sm transition-colors ${
+                              activeId === item.id
+                                ? `${themeAccentText} font-medium`
+                                : 'text-slate-600 hover:text-slate-900'
+                            }`}
+                          >
+                            {activeId === item.id && (
+                              <span className={`absolute -left-[23px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 ${themeBlockquoteBorder}`} />
+                            )}
+                            {item.title}
+                          </button>
+                        ))}
+                      </nav>
+                    )}
+                  </div>
+                )}
+
+                <Markdown 
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                  components={components}
+                >
+                  {afterTOC}
                 </Markdown>
               </div>
             </article>
@@ -265,35 +319,9 @@ export function ArticlePage() {
 
           {/* Right Sidebar - Navigation & Article List */}
           <div className="hidden lg:block lg:w-1/4 space-y-8">
-            
-            {/* Article Navigation (TOC) */}
-            <div className="sticky top-28 bg-white p-6 rounded-2xl shadow-sm ring-1 ring-slate-200 mb-8">
-              <div className="flex items-center gap-2 mb-4 text-slate-900 font-semibold">
-                <List className={`w-5 h-5 ${themeAccentText}`} />
-                <span>文章导航</span>
-              </div>
-              <nav className="space-y-1 relative border-l-2 border-slate-100 ml-2 pl-4">
-                {article.toc.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToHeading(item.id)}
-                    className={`relative block text-left w-full py-1.5 text-sm transition-colors ${
-                      activeId === item.id
-                        ? `${themeAccentText} font-medium`
-                        : 'text-slate-500 hover:text-slate-900'
-                    }`}
-                  >
-                    {activeId === item.id && (
-                      <span className={`absolute -left-[23px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 ${themeBlockquoteBorder}`} />
-                    )}
-                    {item.title}
-                  </button>
-                ))}
-              </nav>
+            <div className="sticky top-28">
+              <RecommendedPlansWidget />
             </div>
-            
-            <RecommendedPlansWidget />
-
           </div>
         </div>
       </div>
