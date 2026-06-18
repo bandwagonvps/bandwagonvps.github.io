@@ -5,26 +5,34 @@ const cases = [
   {
     title: '建站 / 博客',
     description: '使用 WordPress 等系统建立个人博客或小型网站，对访问速度和 SEO 收录有要求。',
-    recommendation: '推荐 CN2 GIA 套餐，速度最稳，延迟极低。',
+    recommendation: '推荐 CN2 GIA-E 基础套餐，速度最稳，延迟极低。',
     icon: Globe,
+    link: 'https://bwh81.net/cart.php?a=add&pid=87&aff=80471',
+    linkText: '查看 CN2 GIA-E 套餐'
   },
   {
     title: '外贸站 / 跨境电商',
     description: '面向全球客户的商业站点，必须确保全球各地访问都不卡顿，绝不能有宕机风险。',
     recommendation: '推荐香港 CN2 GIA 或 日本东京套餐，企业级保障。',
     icon: Store,
+    link: 'https://bwh81.net/cart.php?a=add&pid=95&aff=80471',
+    linkText: '查看香港 CN2 GIA 套餐'
   },
   {
     title: '新手入门与长线投资',
     description: '想熟悉 Linux 操作或部署长期项目。搬瓦工全线走高端路线，如果不差钱可直接买基础款，支持未来无缝一键补差价升级到企业级配置，免去数据迁移之苦。',
-    recommendation: '推荐 CN2 GIA-E 基础款，按需平滑升级。',
+    recommendation: '推荐入门级常规 KVM 或 CN2 GIA-E，按需平滑升级。',
     icon: Terminal,
+    link: 'https://bwh81.net/cart.php?a=add&pid=44&aff=80471',
+    linkText: '查看入门 KVM 套餐'
   },
   {
     title: '长效稳定网络节点',
     description: '需要全天候在线、晚高峰不降速的极致体验。停止寻找绝版特价机，直接购买常规 CN2 GIA 或限量版，省下折腾的时间投入到核心业务中。',
     recommendation: '推荐常规特惠限量版或标准 CN2 GIA 套餐。',
     icon: FlaskConical,
+    link: 'https://bwh81.net/aff.php?aff=80471',
+    linkText: '前往官网选购'
   },
 ];
 
@@ -56,7 +64,10 @@ export function UseCases() {
                   {item.description}
                 </p>
                 <div className="mt-6 border-t border-slate-100 pt-6">
-                  <p className="text-sm font-medium text-amber-600">{item.recommendation}</p>
+                  <p className="text-sm font-medium text-amber-600 mb-4">{item.recommendation}</p>
+                  <a href={item.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 transition-all w-full sm:w-auto">
+                    {item.linkText}
+                  </a>
                 </div>
               </div>
             ))}

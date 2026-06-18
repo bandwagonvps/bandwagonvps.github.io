@@ -4,11 +4,11 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { List, BookOpen, ChevronRight, Home, Calendar, Clock, User } from 'lucide-react';
 import { Link, useParams, Navigate, useLocation } from 'react-router-dom';
-import { startArticles, chooseArticles, alternativesArticles } from '../data/articles';
+import { startArticles, chooseArticles, alternativesArticles, troubleshootArticles } from '../data/articles';
 import { useSEO } from '../lib/useSEO';
 import { RecommendedPlansWidget } from '../components/layout/RecommendedPlansWidget';
 
-const allArticles = [...startArticles, ...chooseArticles, ...alternativesArticles];
+const allArticles = [...startArticles, ...chooseArticles, ...alternativesArticles, ...troubleshootArticles];
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -141,6 +141,15 @@ export function ArticlePage() {
     td: ({ node, ...props }) => (
       <td className="px-6 py-4 border-b border-slate-100 last:border-0 text-slate-600 align-top leading-relaxed" {...props} />
     ),
+    a: ({ node, href, ...props }) => {
+      const linkColorClass = isSetup ? 'text-amber-600 hover:text-amber-500' : 'text-emerald-600 hover:text-emerald-500';
+      const isExternal = href?.startsWith('http');
+      const isAffiliate = href?.includes('aff=');
+      const target = isExternal ? '_blank' : undefined;
+      const rel = isExternal ? (isAffiliate ? 'nofollow noopener noreferrer' : 'noopener noreferrer') : undefined;
+
+      return <a href={href} target={target} rel={rel} className={`${linkColorClass} font-medium underline underline-offset-2 decoration-2 decoration-transparent hover:decoration-current transition-colors`} {...props} />;
+    },
     blockquote: ({ node, ...props }) => (
       <blockquote className={`not-prose my-8 border-l-4 py-4 px-6 rounded-r-xl shadow-sm ${themeBlockquoteBg} ${themeBlockquoteBorder}`}>
         <p className={`font-medium leading-relaxed m-0 text-[15px] ${themeBlockquoteText}`}>
@@ -159,6 +168,9 @@ export function ArticlePage() {
   } else if (article.category === 'alternatives') {
     categoryName = '对比与替代方案';
     relatedList = alternativesArticles;
+  } else if (article.category === 'troubleshoot') {
+    categoryName = '故障排查';
+    relatedList = troubleshootArticles;
   }
   
   const categoryPath = `/${article.category}`;

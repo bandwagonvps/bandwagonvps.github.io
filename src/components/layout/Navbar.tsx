@@ -26,7 +26,7 @@ export function Navbar() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-white">
                 <Server size={20} />
               </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900">BWH Guide</span>
+              <span className="text-xl font-bold tracking-tight text-slate-900">搬瓦工中文网</span>
             </Link>
           </div>
           

@@ -6,21 +6,16 @@ const footerLinks = {
     { name: '新手指南', path: '/start' },
     { name: '优惠码', path: '/coupon' },
     { name: '套餐机房', path: '/choose' },
-    { name: '线路测速', path: '/speed' },
-    { name: '买后教程', path: '/after-buy' },
-    { name: '建站教程', path: '/website' },
+    { name: '对比替代', path: '/alternatives' },
   ],
   support: [
+    { name: '关于我们', path: '/about' },
     { name: '故障排查', path: '/troubleshooting' },
-    { name: '账号续费', path: '/account' },
-    { name: '对比替代', path: '/alternatives' },
-    { name: '工单模板', path: '/templates' },
+    { name: '网站地图', path: '/sitemap' },
   ],
   tools: [
     { name: '套餐选择器', path: '/tools/plan-selector' },
-    { name: '总成本计算器', path: '/tools/cost-calculator' },
-    { name: '下单检查清单', path: '/tools/order-checklist' },
-    { name: '机房选择器', path: '/tools/datacenter-selector' },
+    { name: '搬瓦工库存', path: '/stock' },
   ],
 };
 
@@ -34,7 +29,7 @@ export function Footer() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500 text-white">
                 <Server size={20} />
               </div>
-              <span className="text-xl font-bold tracking-tight text-slate-900">BWH Guide</span>
+              <span className="text-xl font-bold tracking-tight text-slate-900">搬瓦工中文网</span>
             </Link>
             <p className="text-sm leading-6 text-slate-600 max-w-xs">
               专注于真实评测与结构化指南，帮你做对每次购买和续费决策。我们提供清晰的路径，不制造庞大冗余的数据库。
@@ -85,7 +80,7 @@ export function Footer() {
         </div>
         <div className="mt-16 border-t border-slate-200 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-xs leading-5 text-slate-500 text-center">
-            &copy; {new Date().getFullYear()} BWH Guide. All rights reserved. 不隶属于 BandwagonHost 官方。
+            &copy; {new Date().getFullYear()} 搬瓦工中文网. All rights reserved. 不隶属于 BandwagonHost 官方。
           </p>
         </div>
       </div>

@@ -12,9 +12,12 @@ import { CouponPage } from './pages/Coupon';
 import { StartPage } from './pages/Start';
 import { ChoosePage } from './pages/Choose';
 import { AlternativesPage } from './pages/Alternatives';
+import { TroubleshootPage } from './pages/Troubleshoot';
 import { ArticlePage } from './pages/Article';
 import { ToolPage } from './pages/Tool';
 import { StockPage } from './pages/Stock';
+import { AboutPage } from './pages/About';
+import { SitemapPage } from './pages/Sitemap';
 
 export default function App() {
   return (
@@ -23,6 +26,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="sitemap" element={<SitemapPage />} />
           <Route path="tools/plan-selector" element={<ToolPage />} />
           <Route path="coupon" element={<CouponPage />} />
           <Route path="stock" element={<StockPage />} />
@@ -32,6 +37,9 @@ export default function App() {
           <Route path="choose/:slug" element={<ArticlePage />} />
           <Route path="alternatives" element={<AlternativesPage />} />
           <Route path="alternatives/:slug" element={<ArticlePage />} />
+          <Route path="troubleshooting" element={<TroubleshootPage />} />
+          <Route path="troubleshoot" element={<TroubleshootPage />} />
+          <Route path="troubleshoot/:slug" element={<ArticlePage />} />
           <Route path="*" element={<PlaceholderPage />} />
         </Route>
       </Routes>
