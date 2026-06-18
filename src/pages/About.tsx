@@ -4,7 +4,7 @@ import { Info, Mail } from 'lucide-react';
 export function AboutPage() {
   useSEO({
     title: '关于我们',
-    description: '了解搬瓦工指南（BWH Guide）的成立初衷与网站使命。为您提供真实、客观的 VPS 选购建议与技术教程。'
+    description: '了解搬瓦工中文网的成立初衷与网站使命。为您提供真实、客观的 VPS 选购建议与技术教程。'
   });
 
   return (
@@ -22,7 +22,7 @@ export function AboutPage() {
 
         <div className="prose prose-slate prose-amber max-w-none">
           <p className="lead text-xl text-slate-600 mb-8 border-l-4 border-amber-500 pl-4">
-            欢迎来到搬瓦工指南（BWH Guide）。我们致力于为您提供最真实、客观的海外 VPS 选购建议与深度的技术实践教程。
+            欢迎来到搬瓦工中文网。我们致力于为您提供最真实、客观的海外 VPS 选购建议与深度的技术实践教程。
           </p>
 
           <h2 className="text-2xl font-bold mt-10 mb-4 text-slate-900">建站初衷</h2>

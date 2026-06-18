@@ -6,7 +6,7 @@ import { startArticles, chooseArticles, alternativesArticles, troubleshootArticl
 export function SitemapPage() {
   useSEO({
     title: '网站地图 Sitemap',
-    description: '搬瓦工指南所有栏目与文章结构的完整地图，方便您快速查找所需的 VPS 选购与排障教程。'
+    description: '搬瓦工中文网所有栏目与文章结构的完整地图，方便您快速查找所需的 VPS 选购与排障教程。'
   });
 
   return (

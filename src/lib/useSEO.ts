@@ -7,7 +7,7 @@ interface SEOProps {
 
 export function useSEO({ title, description }: SEOProps) {
   useEffect(() => {
-    const fullTitle = title ? `${title} - 搬瓦工指南 BWH Guide` : '搬瓦工指南 BWH Guide';
+    const fullTitle = title ? `${title} - 搬瓦工中文网` : '搬瓦工中文网';
     document.title = fullTitle;
 
     // Helper to update or create meta tags
