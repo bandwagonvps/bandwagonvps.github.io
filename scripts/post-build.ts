@@ -49,6 +49,9 @@ function run() {
     fs.writeFileSync(path.join(dir, 'index.html'), indexHtml, 'utf-8');
   });
 
+  // Disable Jekyll on GitHub pages
+  fs.writeFileSync(path.join(distDir, '.nojekyll'), '', 'utf-8');
+
   console.log('Post-build: copied index.html to 404.html and all static route folders.');
 }
 

@@ -16,22 +16,42 @@ export function StockPage() {
   const fetchStock = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch('/api/stock-status');
-      if (res.ok) {
-        const data = await res.json();
-        // data[] contains api response with pid and status. 
-        // status 1 = in stock, 0 = out of stock
-        // Let's create a map for fast lookup
-        const stockMap = new Map();
-        if (Array.isArray(data)) {
-          data.forEach((item: any) => {
-            if (item.pid) {
-              stockMap.set(item.pid.toString(), item.status === 1);
-            }
-          });
+      let data = null;
+      let isHtml = false;
+      
+      // Try local API first (works in dev or Cloud Run)
+      try {
+        const res = await fetch('/api/stock-status');
+        if (res.ok) {
+          const contentType = res.headers.get('content-type');
+          if (contentType && contentType.includes('application/json')) {
+            data = await res.json();
+          } else {
+             isHtml = true;
+          }
+        } else {
+          isHtml = true; // 404 in GitHub pages
         }
+      } catch (e) {
+        isHtml = true; // Network error or something
+      }
+
+      // If local API returned HTML (GitHub Pages static host) or failed, use CORS proxy
+      if (isHtml || !data) {
+        const corsRes = await fetch('https://corsproxy.io/?https://stock.bwg.net/products.json');
+        if (corsRes.ok) {
+           data = await corsRes.json();
+        }
+      }
+
+      if (data && Array.isArray(data)) {
+        const stockMap = new Map();
+        data.forEach((item: any) => {
+          if (item.pid) {
+            stockMap.set(item.pid.toString(), item.status === 1);
+          }
+        });
         
-        // Update local state with new stock values
         setCategories(prev => prev.map(category => ({
           ...category,
           plans: category.plans.map(plan => ({
