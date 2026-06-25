@@ -40,7 +40,7 @@ export function TroubleshootPage() {
               </div>
               
               <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                <Link to={`/troubleshoot/${article.slug}`} className="hover:text-red-500 transition-colors">
+                <Link to={`/troubleshoot/${article.slug}/`} className="hover:text-red-500 transition-colors">
                   {article.title}
                 </Link>
               </h2>
@@ -51,7 +51,7 @@ export function TroubleshootPage() {
               
               <div className="mt-auto">
                 <Link 
-                  to={`/troubleshoot/${article.slug}`} 
+                  to={`/troubleshoot/${article.slug}/`} 
                   className="inline-flex items-center gap-2 text-sm font-medium text-red-500 hover:text-red-400 group"
                 >
                   阅读方案 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

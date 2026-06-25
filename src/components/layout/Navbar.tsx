@@ -5,13 +5,13 @@ import { cn } from '../../lib/utils';
 
 const navItems = [
   { name: '首页', path: '/' },
-  { name: '新手指南', path: '/start' },
-  { name: '套餐机房', path: '/choose' },
-  { name: '搬瓦工库存', path: '/stock' },
-  { name: '买后教程', path: '/after-buy' },
-  { name: '故障排查', path: '/troubleshooting' },
-  { name: '工具', path: '/tools' },
-  { name: '优惠码', path: '/coupon' },
+  { name: '新手指南', path: '/start/' },
+  { name: '套餐机房', path: '/choose/' },
+  { name: '搬瓦工库存', path: '/stock/' },
+  { name: '买后教程', path: '/after-buy/' },
+  { name: '故障排查', path: '/troubleshoot/' },
+  { name: '工具', path: '/tools/' },
+  { name: '优惠码', path: '/coupon/' },
 ];
 
 export function Navbar() {

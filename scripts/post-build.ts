@@ -12,6 +12,8 @@ async function run() {
   const routes = [
     '/',
     '/about',
+    '/after-buy',
+    '/tools',
     '/start',
     '/choose',
     '/alternatives',

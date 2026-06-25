@@ -6,25 +6,25 @@ const tools = [
     name: '套餐选择器',
     description: '输入用途、人群、预算，直接输出推荐购买方向与禁忌。',
     icon: Settings2,
-    path: '/tools/plan-selector',
+    path: '/tools/plan-selector/',
   },
   {
     name: '总成本计算器',
     description: '计算1-3年真实持有成本，包含建站等隐藏成本，判断续费价值。',
     icon: Calculator,
-    path: '/tools/cost-calculator',
+    path: '/tools/cost-calculator/',
   },
   {
     name: '下单检查清单',
     description: '下单前的防呆工具，排除线路、机房和预算的典型误区。',
     icon: ClipboardCheck,
-    path: '/tools/order-checklist',
+    path: '/tools/order-checklist/',
   },
   {
     name: '机房选择器',
     description: '通过本地运营商和目标受众人群，精准定位不踩坑的机房。',
     icon: Network,
-    path: '/tools/datacenter-selector',
+    path: '/tools/datacenter-selector/',
   },
 ];
 

@@ -497,7 +497,7 @@ export function CouponPage() {
               <ul className="space-y-4">
                 {chooseArticles.map((navArticle) => (
                    <li key={navArticle.slug}>
-                     <Link to={`/choose/${navArticle.slug}`} className="block text-base text-slate-600 hover:text-slate-900">
+                     <Link to={`/choose/${navArticle.slug}/`} className="block text-base text-slate-600 hover:text-slate-900">
                        {navArticle.title}
                      </Link>
                    </li>

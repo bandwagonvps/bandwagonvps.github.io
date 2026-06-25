@@ -173,7 +173,7 @@ export function ArticlePage() {
     relatedList = troubleshootArticles;
   }
   
-  const categoryPath = `/${article.category}`;
+  const categoryPath = `/${article.category}/`;
 
   // Split content into blocks by ## headings, and remove markdown horizontal rules '---'
   const cleanContent = article.content.replace(/^---\s*$/gm, '');
@@ -320,7 +320,7 @@ export function ArticlePage() {
               <ul className="space-y-4">
                 {relatedList.map((navArticle) => (
                    <li key={navArticle.slug}>
-                     <Link to={`/${article.category}/${navArticle.slug}`} className={`block text-base ${article.slug === navArticle.slug ? `font-medium ${themeAccentText}` : 'text-slate-600 hover:text-slate-900'}`}>
+                     <Link to={`/${article.category}/${navArticle.slug}/`} className={`block text-base ${article.slug === navArticle.slug ? `font-medium ${themeAccentText}` : 'text-slate-600 hover:text-slate-900'}`}>
                        {navArticle.title}
                      </Link>
                    </li>

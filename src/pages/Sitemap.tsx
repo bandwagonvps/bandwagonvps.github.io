@@ -30,14 +30,14 @@ export function SitemapPage() {
             </h2>
             <ul className="space-y-4 font-medium text-slate-700">
               <li><Link to="/" className="hover:text-amber-500 transition-colors">首页 Home</Link></li>
-              <li><Link to="/about" className="hover:text-amber-500 transition-colors">关于我们 About</Link></li>
-              <li><Link to="/start" className="hover:text-amber-500 transition-colors">新手入门 Getting Started</Link></li>
-              <li><Link to="/choose" className="hover:text-amber-500 transition-colors">选机房指南 Choosing Locations</Link></li>
-              <li><Link to="/alternatives" className="hover:text-amber-500 transition-colors">替代与对比 Alternatives</Link></li>
-              <li><Link to="/troubleshoot" className="hover:text-amber-500 transition-colors">故障排查 Troubleshooting</Link></li>
-              <li><Link to="/tool" className="hover:text-amber-500 transition-colors">IP 测速与分析 Tools</Link></li>
-              <li><Link to="/stock" className="hover:text-amber-500 transition-colors">实时库存监控 Stock Monitor</Link></li>
-              <li><Link to="/sitemap" className="hover:text-amber-500 transition-colors">网站地图 Sitemap</Link></li>
+              <li><Link to="/about/" className="hover:text-amber-500 transition-colors">关于我们 About</Link></li>
+              <li><Link to="/start/" className="hover:text-amber-500 transition-colors">新手入门 Getting Started</Link></li>
+              <li><Link to="/choose/" className="hover:text-amber-500 transition-colors">选机房指南 Choosing Locations</Link></li>
+              <li><Link to="/alternatives/" className="hover:text-amber-500 transition-colors">替代与对比 Alternatives</Link></li>
+              <li><Link to="/troubleshoot/" className="hover:text-amber-500 transition-colors">故障排查 Troubleshooting</Link></li>
+              <li><Link to="/tools/plan-selector/" className="hover:text-amber-500 transition-colors">IP 测速与分析 Tools</Link></li>
+              <li><Link to="/stock/" className="hover:text-amber-500 transition-colors">实时库存监控 Stock Monitor</Link></li>
+              <li><Link to="/sitemap/" className="hover:text-amber-500 transition-colors">网站地图 Sitemap</Link></li>
             </ul>
           </section>
 
@@ -49,7 +49,7 @@ export function SitemapPage() {
             <ul className="space-y-4 text-slate-600 text-sm">
               {startArticles.map(article => (
                 <li key={article.slug}>
-                  <Link to={`/start/${article.slug}`} className="hover:text-amber-500 transition-colors block">
+                  <Link to={`/start/${article.slug}/`} className="hover:text-amber-500 transition-colors block">
                     {article.title}
                   </Link>
                 </li>
@@ -65,7 +65,7 @@ export function SitemapPage() {
             <ul className="space-y-4 text-slate-600 text-sm">
               {chooseArticles.map(article => (
                 <li key={article.slug}>
-                  <Link to={`/choose/${article.slug}`} className="hover:text-amber-500 transition-colors block">
+                  <Link to={`/choose/${article.slug}/`} className="hover:text-amber-500 transition-colors block">
                     {article.title}
                   </Link>
                 </li>
@@ -82,7 +82,7 @@ export function SitemapPage() {
               <ul className="space-y-4 text-slate-600 text-sm">
                 {alternativesArticles.map(article => (
                   <li key={article.slug}>
-                    <Link to={`/alternatives/${article.slug}`} className="hover:text-amber-500 transition-colors block">
+                    <Link to={`/alternatives/${article.slug}/`} className="hover:text-amber-500 transition-colors block">
                       {article.title}
                     </Link>
                   </li>
@@ -97,7 +97,7 @@ export function SitemapPage() {
               <ul className="space-y-4 text-slate-600 text-sm">
                 {troubleshootArticles.map(article => (
                   <li key={article.slug}>
-                    <Link to={`/troubleshoot/${article.slug}`} className="hover:text-amber-500 transition-colors block">
+                    <Link to={`/troubleshoot/${article.slug}/`} className="hover:text-amber-500 transition-colors block">
                       {article.title}
                     </Link>
                   </li>

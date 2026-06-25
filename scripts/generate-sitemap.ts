@@ -34,12 +34,15 @@ function generateSitemap() {
 
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map(route => `  <url>
-    <loc>${DOMAIN}${route}</loc>
+${routes.map(route => {
+  const urlPath = route === '/' ? route : (route.endsWith('/') ? route : `${route}/`);
+  return `  <url>
+    <loc>${DOMAIN}${urlPath}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${route === '/' ? 'daily' : 'weekly'}</changefreq>
     <priority>${route === '/' ? '1.0' : '0.8'}</priority>
-  </url>`).join('\n')}
+  </url>`;
+}).join('\n')}
 </urlset>`;
 
   const publicDir = path.join(__dirname, '../public');
@@ -49,10 +52,17 @@ ${routes.map(route => `  <url>
 
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapContent, 'utf-8');
   
+  const txtContent = routes.map(route => {
+    const urlPath = route === '/' ? route : (route.endsWith('/') ? route : `${route}/`);
+    return `${DOMAIN}${urlPath}`;
+  }).join('\n');
+  fs.writeFileSync(path.join(publicDir, 'sitemap.txt'), txtContent, 'utf-8');
+  
   const robotsContent = `User-agent: *
 Allow: /
 
-Sitemap: ${DOMAIN}/sitemap.xml`;
+Sitemap: ${DOMAIN}/sitemap.xml
+Sitemap: ${DOMAIN}/sitemap.txt`;
   
   fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsContent, 'utf-8');
   

@@ -40,7 +40,7 @@ export function AlternativesPage() {
               </div>
               
               <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                <Link to={`/alternatives/${article.slug}`} className="hover:text-emerald-600 transition-colors">
+                <Link to={`/alternatives/${article.slug}/`} className="hover:text-emerald-600 transition-colors">
                   {article.title}
                 </Link>
               </h2>
@@ -51,7 +51,7 @@ export function AlternativesPage() {
               
               <div className="mt-auto">
                 <Link 
-                  to={`/alternatives/${article.slug}`} 
+                  to={`/alternatives/${article.slug}/`} 
                   className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-500 group"
                 >
                   阅读全文 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

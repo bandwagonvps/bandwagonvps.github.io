@@ -40,7 +40,7 @@ export function StartPage() {
               </div>
               
               <h2 className="text-2xl font-bold text-slate-900 mb-4">
-                <Link to={`/start/${article.slug}`} className="hover:text-amber-600 transition-colors">
+                <Link to={`/start/${article.slug}/`} className="hover:text-amber-600 transition-colors">
                   {article.title}
                 </Link>
               </h2>
@@ -51,7 +51,7 @@ export function StartPage() {
               
               <div className="mt-auto">
                 <Link 
-                  to={`/start/${article.slug}`} 
+                  to={`/start/${article.slug}/`} 
                   className="inline-flex items-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-500 group"
                 >
                   阅读全文 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

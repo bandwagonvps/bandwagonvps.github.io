@@ -62,7 +62,7 @@ export function Roadmap() {
           </div>
           <div className="mt-16 flex justify-center">
             <Link
-              to="/after-buy"
+              to="/after-buy/"
               className="rounded-md bg-amber-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 flex items-center gap-2"
             >
               <CheckCircle2 className="h-4 w-4" /> 查看完整图文教程

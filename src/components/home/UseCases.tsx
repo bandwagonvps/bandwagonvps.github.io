@@ -73,7 +73,7 @@ export function UseCases() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link to="/choose" className="text-sm font-semibold text-slate-900 hover:text-amber-600 inline-flex items-center gap-1 group">
+            <Link to="/choose/" className="text-sm font-semibold text-slate-900 hover:text-amber-600 inline-flex items-center gap-1 group">
                查看完整套餐机房对比 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

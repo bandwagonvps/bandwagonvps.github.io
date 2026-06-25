@@ -30,7 +30,8 @@ export function useSEO({ title, description }: SEOProps) {
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', fullTitle);
 
     // Canonical link
-    const canonicalUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const DOMAIN = 'https://bandwagonvps.github.io';
+    const canonicalUrl = typeof window !== 'undefined' ? `${DOMAIN}${window.location.pathname}` : '';
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');

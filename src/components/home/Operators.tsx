@@ -54,7 +54,7 @@ export function Operators() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link to="/tools/datacenter-selector" className="text-sm font-semibold text-slate-900 hover:text-amber-600 underline underline-offset-4">
+            <Link to="/tools/datacenter-selector/" className="text-sm font-semibold text-slate-900 hover:text-amber-600 underline underline-offset-4">
               进入机房选择器向导
             </Link>
           </div>

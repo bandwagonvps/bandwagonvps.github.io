@@ -191,7 +191,7 @@ export function Hero() {
                   <a href={recommendation.main.link} target="_blank" rel="sponsored nofollow noopener" className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-900 text-sm font-bold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
                     访问官网选购 <ArrowRight className="w-4 h-4" />
                   </a>
-                  <Link to="/stock" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
+                  <Link to="/stock/" className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white text-sm font-semibold py-3 px-5 rounded-xl transition-colors w-full sm:w-auto">
                     查看实时库存
                   </Link>
                 </div>

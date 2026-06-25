@@ -3,19 +3,19 @@ import { Server } from 'lucide-react';
 
 const footerLinks = {
   content: [
-    { name: '新手指南', path: '/start' },
-    { name: '优惠码', path: '/coupon' },
-    { name: '套餐机房', path: '/choose' },
-    { name: '对比替代', path: '/alternatives' },
+    { name: '新手指南', path: '/start/' },
+    { name: '优惠码', path: '/coupon/' },
+    { name: '套餐机房', path: '/choose/' },
+    { name: '对比替代', path: '/alternatives/' },
   ],
   support: [
-    { name: '关于我们', path: '/about' },
-    { name: '故障排查', path: '/troubleshooting' },
-    { name: '网站地图', path: '/sitemap' },
+    { name: '关于我们', path: '/about/' },
+    { name: '故障排查', path: '/troubleshoot/' },
+    { name: '网站地图', path: '/sitemap/' },
   ],
   tools: [
-    { name: '套餐选择器', path: '/tools/plan-selector' },
-    { name: '搬瓦工库存', path: '/stock' },
+    { name: '套餐选择器', path: '/tools/plan-selector/' },
+    { name: '搬瓦工库存', path: '/stock/' },
   ],
 };
 

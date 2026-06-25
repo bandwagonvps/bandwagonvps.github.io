@@ -8,7 +8,7 @@ const stages = [
     icon: HelpCircle,
     color: 'text-blue-600',
     bgColor: 'bg-blue-50',
-    link: '/start',
+    link: '/start/',
     linkText: '阅读新手指南',
   },
   {
@@ -17,7 +17,7 @@ const stages = [
     icon: ShoppingCart,
     color: 'text-amber-600',
     bgColor: 'bg-amber-50',
-    link: '/choose',
+    link: '/choose/',
     linkText: '使用套餐选择器',
   },
   {
@@ -26,7 +26,7 @@ const stages = [
     icon: Settings,
     color: 'text-emerald-600',
     bgColor: 'bg-emerald-50',
-    link: '/after-buy',
+    link: '/after-buy/',
     linkText: '查看买后教程',
   },
   {
@@ -35,7 +35,7 @@ const stages = [
     icon: AlertOctagon,
     color: 'text-rose-600',
     bgColor: 'bg-rose-50',
-    link: '/troubleshooting',
+    link: '/troubleshoot/',
     linkText: '进入故障排查',
   },
 ];

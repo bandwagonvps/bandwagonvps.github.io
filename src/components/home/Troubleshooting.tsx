@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { Activity, ServerCrash, Ban, HardDrive, Cpu, Search } from 'lucide-react';
 
 const issues = [
-  { name: '🔌 SSH 拒绝连接 / 超时', desc: '排查本地网络与端口拦截', icon: Ban, color: 'text-red-500', link: '/troubleshoot/ssh-connection-failed-troubleshooting' },
-  { name: '🌐 网站打不开 (502/504 等)', desc: '排查 Nginx/Apache 状态与内存溢出', icon: ServerCrash, color: 'text-orange-500', link: '/troubleshooting' },
-  { name: '🐌 访问速度突然极速变慢', desc: '查看机房路由波动与测试报告', icon: Activity, color: 'text-amber-500', link: '/troubleshooting' },
-  { name: '🚫 部分端口不通 / 被阻断', desc: '测试 IP 连通性与 TCP 阻断状态', icon: Search, color: 'text-blue-500', link: '/troubleshooting' },
-  { name: '💾 磁盘写满导致无法启动', desc: '清理日志文件与扩容指南', icon: HardDrive, color: 'text-slate-500', link: '/troubleshooting' },
-  { name: '🔥 持续高 CPU 占用警告', desc: '排查异常进程与恶意脚本', icon: Cpu, color: 'text-rose-500', link: '/troubleshooting' },
+  { name: '🔌 SSH 拒绝连接 / 超时', desc: '排查本地网络与端口拦截', icon: Ban, color: 'text-red-500', link: '/troubleshoot/ssh-connection-failed-troubleshooting/' },
+  { name: '🌐 网站打不开 (502/504 等)', desc: '排查 Nginx/Apache 状态与内存溢出', icon: ServerCrash, color: 'text-orange-500', link: '/troubleshoot/' },
+  { name: '🐌 访问速度突然极速变慢', desc: '查看机房路由波动与测试报告', icon: Activity, color: 'text-amber-500', link: '/troubleshoot/' },
+  { name: '🚫 部分端口不通 / 被阻断', desc: '测试 IP 连通性与 TCP 阻断状态', icon: Search, color: 'text-blue-500', link: '/troubleshoot/' },
+  { name: '💾 磁盘写满导致无法启动', desc: '清理日志文件与扩容指南', icon: HardDrive, color: 'text-slate-500', link: '/troubleshoot/' },
+  { name: '🔥 持续高 CPU 占用警告', desc: '排查异常进程与恶意脚本', icon: Cpu, color: 'text-rose-500', link: '/troubleshoot/' },
 ];
 
 export function Troubleshooting() {
@@ -43,7 +43,7 @@ export function Troubleshooting() {
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-medium">
             <span className="text-slate-500">实在无法解决？</span>
-            <Link to="/templates" className="text-amber-600 hover:text-amber-500 underline decoration-amber-600/30 underline-offset-4 transition-colors">
+            <Link to="/templates/" className="text-amber-600 hover:text-amber-500 underline decoration-amber-600/30 underline-offset-4 transition-colors">
               获取标准化英文工单模板 (直接提交给官方客服)
             </Link>
           </div>
