@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://bandwagonvps.github.io/sitemap.xml
+Sitemap: https://bandwagonvps.github.io/sitemap.txt
